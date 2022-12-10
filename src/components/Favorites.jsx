@@ -6,11 +6,7 @@ import { filterCards } from '../redux/action'
 
 function Favorites({ myFavorites }) {
 
-    const dispatch = useDispatch();
-
-    function handleFilter(e){
-        dispatch(filterCards(e.target.value))
-    }
+    const dispatch = useDispatch();   
 
     return (
         <div>
@@ -20,7 +16,7 @@ function Favorites({ myFavorites }) {
                     <option value='Ascendente'>Ascendente</option>
                     <option value='Descendente'>Descendente</option>
                 </select>
-                <select onChange={handleFilter} name='order' id=''>
+                <select onChange={(e) => dispatch(filterCards(e.target.value))} name='filter' id=''>
                     <option value='Male'>Male</option>
                     <option value='Female'>Female</option>
                     <option value='Genderless'>Genderless</option>
