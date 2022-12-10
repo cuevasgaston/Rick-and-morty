@@ -12,11 +12,13 @@ export default function rootReducer(state = initialState, { type, payload }) {
     switch (type) {
         case ADD_FAVORITES:
             return {
+                ...state,
                 allCharacters: [...state.myFavorites, payload],
                 myFavorites: [...state.myFavorites, payload]
             }
         case DELETE_FAVORITES:
             return {
+                ...state,
                 myFavorites: state.myFavorites.filter(fav => fav.id !== payload)
             }
         case FILTER:
@@ -37,7 +39,7 @@ export default function rootReducer(state = initialState, { type, payload }) {
 
             return {
                 ...state,
-                myFavorites: sortedCharacters
+                myFavorites: [...sortedCharacters]
             }
 
 
